@@ -1,0 +1,50 @@
+{
+  "name": "@illyatkachenko/trap",
+  "version": "1.0.0",
+  "description": "Advanced honeypot security system for Next.js applications",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "lint": "eslint src --ext .ts,.tsx",
+    "test": "jest",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/illyatkachenko/Trap-.git"
+  },
+  "keywords": [
+    "honeypot",
+    "security",
+    "nextjs",
+    "trap",
+    "fingerprint",
+    "telegram",
+    "ip-blocking",
+    "attack-detection"
+  ],
+  "author": "Illia Tkachenko",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/illyatkachenko/Trap-/issues"
+  },
+  "homepage": "https://github.com/illyatkachenko/Trap-#readme",
+  "peerDependencies": {
+    "next": ">=14.0.0",
+    "react": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.0.0",
+    "eslint": "^8.0.0",
+    "jest": "^29.0.0",
+    "typescript": "^5.0.0"
+  }
+}
+
