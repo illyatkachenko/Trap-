@@ -1,7 +1,13 @@
 /**
  * Trap - Honeypot Security System
  * 
- * Main entry point for the Trap library.
+ * Advanced honeypot for Next.js applications with:
+ * - 195+ trap patterns
+ * - 500+ attack detection patterns
+ * - Real-time Telegram alerts
+ * - Interactive threat management
+ * - Browser fingerprinting
+ * - Media capture capabilities
  */
 
 // Core modules
@@ -16,8 +22,12 @@ export type {
   GeoData 
 } from './collector';
 
+// Attack detection
+export { detectAttackType, extractHeaders } from './detector';
+export type { DetectionResult } from './detector';
+
 // Trap definitions
-export { honeypotTraps, HONEYPOT_TRAPS } from './traps';
+export { honeypotTraps, matchTrap, generateFakeEnv, TRAP_PATTERNS } from './traps';
 export type { HoneypotTrap } from './traps';
 
 // Geolocation
@@ -40,20 +50,37 @@ export type { BlockedIP, BlockDuration } from './blocker';
 
 // Default export for convenience
 import { collectHoneypotData } from './collector';
-import { honeypotTraps, HONEYPOT_TRAPS } from './traps';
+import { detectAttackType, extractHeaders } from './detector';
+import { honeypotTraps, matchTrap, generateFakeEnv, TRAP_PATTERNS } from './traps';
 import { getGeolocation } from './geolocation';
 import { getWhoisInfo } from './whois';
 import { blockIP, unblockIP, isIPBlocked, getBlockedIPs } from './blocker';
 
-export default {
+const Trap = {
+  // Data collection
   collect: collectHoneypotData,
+  
+  // Attack detection
+  detect: detectAttackType,
+  extractHeaders,
+  
+  // Trap matching
   traps: honeypotTraps,
-  TRAPS: HONEYPOT_TRAPS,
+  matchTrap,
+  generateFakeEnv,
+  PATTERNS: TRAP_PATTERNS,
+  
+  // Geolocation
   geo: getGeolocation,
+  
+  // WHOIS
   whois: getWhoisInfo,
+  
+  // IP blocking
   block: blockIP,
   unblock: unblockIP,
   isBlocked: isIPBlocked,
   getBlocked: getBlockedIPs,
 };
 
+export default Trap;
